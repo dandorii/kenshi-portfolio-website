@@ -1061,3 +1061,30 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
   object-fit: cover;
   object-position: center;
 }
+
+
+.now-playing {
+  padding: 1.25rem;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 12px;
+  background: #0c1423;
+  color: #e5f3ff;
+}
+
+.now-playing .section-label {
+  color: #38bdf8;
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+}
+
+.now-playing-description {
+  color: #a6b6ca;
+  margin-bottom: 1rem;
+}
+
+.now-playing iframe {
+  display: block;
+  max-width: 100%;
+}

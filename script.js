@@ -198,6 +198,108 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+
+/* =========================================
+   SECRET ARCHIVE // HIDDEN MENU
+   ========================================= */
+
+(() => {
+  const trigger = document.getElementById("secret-trigger");
+  const unlockButton = document.getElementById("secret-unlock");
+  const socialSection = document.getElementById("social-link");
+  const secretPage = document.getElementById("secret-page");
+  const returnButton = document.getElementById("secret-return");
+
+  // Stop safely if the required HTML elements are missing.
+  if (
+    !trigger ||
+    !unlockButton ||
+    !socialSection ||
+    !secretPage ||
+    !returnButton
+  ) {
+    return;
+  }
+
+  let clicks = 0;
+  let resetTimer;
+
+  // Inspect the archive with five clicks within 2.5 seconds.
+  trigger.addEventListener("click", () => {
+    clicks++;
+    clearTimeout(resetTimer);
+
+    resetTimer = setTimeout(() => {
+      clicks = 0;
+    }, 2500);
+
+    if (clicks >= 5) {
+      clicks = 0;
+      clearTimeout(resetTimer);
+
+      unlockButton.hidden = false;
+      trigger.setAttribute("aria-label", "Archive inspected");
+
+      if (typeof showToast === "function") {
+        showToast("UNLISTED RECORD DETECTED");
+      }
+
+      if (typeof playTone === "function") {
+        playTone(880, 0.12, "triangle");
+      }
+    }
+  });
+
+  // Open the unlisted page.
+  unlockButton.addEventListener("click", () => {
+    socialSection.hidden = true;
+    secretPage.hidden = false;
+
+    secretPage.setAttribute("tabindex", "-1");
+    secretPage.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "start"
+    });
+
+    secretPage.focus({ preventScroll: true });
+
+    if (typeof showToast === "function") {
+      showToast("UNLISTED MEMORY // OPENED");
+    }
+
+    if (typeof playTone === "function") {
+      playTone(740, 0.1, "triangle");
+    }
+  });
+
+  // Return to the original ten-reflection archive.
+  returnButton.addEventListener("click", () => {
+    secretPage.hidden = true;
+    socialSection.hidden = false;
+
+    socialSection.setAttribute("tabindex", "-1");
+    socialSection.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "start"
+    });
+
+    socialSection.focus({ preventScroll: true });
+
+    if (typeof showToast === "function") {
+      showToast("RETURNING TO PERSONAL ARCHIVE");
+    }
+
+    if (typeof playTone === "function") {
+      playTone(520, 0.08, "sine");
+    }
+  });
+})();
+
+
 // Highlight the menu destination as the visitor scrolls.
 const sectionLinks = [...document.querySelectorAll(".menu-item")];
 const observedSections = sectionLinks
@@ -368,3 +470,234 @@ if ("IntersectionObserver" in window) {
     observer.observe(target);
   });
 })();
+
+
+
+/* =========================================
+   SOCIAL LINK ARCHIVE // THE STAR ARCANA
+   ========================================= */
+
+(() => {
+  const nextButton = document.getElementById("social-link-next");
+  const previousButton = document.getElementById("social-link-previous");
+  const rankLabel = document.getElementById("social-link-rank");
+  const title = document.getElementById("social-link-title");
+  const reflection = document.getElementById("social-link-reflection");
+  const progressFill = document.getElementById("social-link-progress-fill");
+  const progressLabel = document.getElementById("social-link-progress-label");
+  const jumpSelector = document.getElementById("social-link-jump");
+
+  // Stop safely if the Social Link section isn't on this page.
+  if (
+    !nextButton ||
+    !previousButton ||
+    !rankLabel ||
+    !title ||
+    !reflection ||
+    !progressFill ||
+    !progressLabel ||
+    !jumpSelector
+  ) {
+    return;
+  }
+
+  const reflections = [
+    {
+      title: "A Connection Without a Deadline.",
+      text: "Some people catch your attention without trying to.\n\nI don't know what a connection will become, and I don't need to decide that now. I'd rather take the time to understand people, appreciate the moments we share, and let things develop naturally.\n\nFor now, this is simply a reminder to be genuine, patient, and present."
+    },
+    {
+      title: "The Value of Patience.",
+      text: "Not everything meaningful has to happen quickly.\n\nI've been learning that patience isn't about waiting around for a particular outcome. It's about giving people room to be themselves while continuing to live my own life.\n\nI can care about a possibility without trying to control it."
+    },
+    {
+      title: "Small Moments Matter.",
+      text: "Sometimes, a person leaves an impression in the simplest ways.\n\nA passing conversation, a familiar presence, or a moment that seems ordinary can stay with me longer than I expect. I may not always understand why, and perhaps I don't need to.\n\nFor now, I'll appreciate these little moments for what they are, without asking them to become something more. Some memories are meaningful even while their stories remain unwritten."
+    },
+    {
+      title: "Be Curious, Not Certain.",
+      text: "It's easy to build a story in my head when I don't have all the answers.\n\nBut assumptions aren't the same as understanding. I'd rather stay curious, listen carefully, and let people show me who they are over time.\n\nI don't need to solve every uncertainty today."
+    },
+    {
+      title: "Keep My Own Rhythm.",
+      text: "A connection should leave room for the rest of life, too.\n\nI still have projects to build, skills to learn, friends to spend time with, and goals worth pursuing.\n\nI can make space for people without losing sight of the person I'm becoming."
+    },
+    {
+      title: "Honesty Without Pressure.",
+      text: "I want to be genuine about what I feel while respecting what other people may feel—or may not feel.\n\nHonesty doesn't require demanding an answer, and kindness shouldn't come with hidden expectations.\n\nI can express myself respectfully and accept that everyone gets to choose their own pace."
+    },
+    {
+      title: "Let People Be Themselves.",
+      text: "It's easy to focus on the version of someone I imagine.\n\nBut real connection means getting to know the actual person, including their boundaries, priorities, and differences from me.\n\nUnderstanding someone matters more than fitting them into a story."
+    },
+    {
+      title: "Make Peace With Uncertainty.",
+      text: "I won't always know where things are heading.\n\nThat doesn't mean I need to rush toward a conclusion or treat every unanswered question as a problem.\n\nI can appreciate what is real in the present while accepting that the future is still unwritten."
+    },
+    {
+      title: "Choose Mutual Effort.",
+      text: "Healthy connections leave room for both people to participate willingly.\n\nI want to notice mutual effort, communicate clearly, and respect the times when someone is busy or needs space.\n\nI don't have to carry a connection alone to prove that it matters."
+    },
+    {
+      title: "Hope, With Both Feet on the Ground.",
+      text: "Hope can be meaningful without becoming a promise about the future.\n\nI can stay open to good things while keeping my expectations realistic, respecting other people's choices, and continuing to grow in my own direction.\n\nWhatever happens next, I want to look back knowing that I acted with sincerity, patience, and respect."
+    }
+  ];
+
+  let currentIndex = 0;
+
+  rankLabel.addEventListener("animationend", () => {
+  rankLabel.classList.remove("rank-up");
+  });
+
+  function renderReflection(index) {
+    const entry = reflections[index];
+    const rank = index + 1;
+    const progress = (rank / reflections.length) * 100;
+
+    rankLabel.textContent =
+      `SOCIAL LINK // RANK ${String(rank).padStart(2, "0")}`;
+
+    title.textContent = entry.title;
+    reflection.textContent = entry.text;
+    reflection.style.whiteSpace = "pre-line";
+
+    progressFill.style.width = `${progress}%`;
+
+    progressLabel.textContent =
+      `REFLECTION ${String(rank).padStart(2, "0")} / ${reflections.length}`;
+
+    const isFirstReflection = index === 0;
+    const isLastReflection = index === reflections.length - 1;
+
+    // FIX: Enable Previous after leaving reflection 01.
+    previousButton.disabled = isFirstReflection;
+
+    // Disable Next only after reaching reflection 10.
+    nextButton.disabled = isLastReflection;
+
+    nextButton.innerHTML = isLastReflection
+      ? 'ARCHIVE COMPLETE <span aria-hidden="true">✓</span>'
+      : 'REVEAL NEXT REFLECTION <span aria-hidden="true">→</span>';
+
+    if (isLastReflection && typeof showToast === "function") {
+      showToast("STAR ARCANA // ARCHIVE COMPLETE");
+    }
+      
+  // Keep the selector synchronized with Previous and Next.
+  jumpSelector.value = String(index);
+  }
+  
+  
+  // Subtle transition when changing reflections.
+  function animateReflectionChange(index) {
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reducedMotion) {
+      renderReflection(index);
+      return;
+    }
+    
+    rankLabel.classList.remove("rank-up");
+    void rankLabel.offsetWidth;
+    rankLabel.classList.add("rank-up");
+
+   
+
+    title.classList.add("reflection-changing");
+    reflection.classList.add("reflection-changing");
+
+    setTimeout(() => {
+      renderReflection(index);
+      title.classList.remove("reflection-changing");
+      reflection.classList.remove("reflection-changing");
+    }, 160);
+  }
+
+
+  // Move forward through the archive.
+  nextButton.addEventListener("click", () => {
+    if (currentIndex >= reflections.length - 1) return;
+
+    currentIndex++;
+    animateReflectionChange(currentIndex);
+  });
+
+  // Move backward through the archive.
+  previousButton.addEventListener("click", () => {
+    if (currentIndex <= 0) return;
+
+    currentIndex--;
+    animateReflectionChange(currentIndex);
+  });
+
+
+  // Jump directly to a selected reflection.
+  jumpSelector.addEventListener("change", () => {
+    const selectedIndex = Number(jumpSelector.value);
+
+    if (
+      Number.isInteger(selectedIndex) &&
+      selectedIndex >= 0 &&
+      selectedIndex < reflections.length
+    ) {
+      currentIndex = selectedIndex;
+      animateReflectionChange(currentIndex);
+    }
+  });
+
+  
+  // Keyboard navigation for the Social Link Archive.
+  document.addEventListener("keydown", (event) => {
+    // Don't intercept keys while the visitor is typing or using a control.
+    const target = event.target;
+    const isInteractiveElement = target instanceof Element &&
+      target.closest(
+        "input, textarea, select, button, a, [contenteditable='true']"
+      );
+
+    if (isInteractiveElement) return;
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+
+    switch (event.key) {
+      case "ArrowLeft":
+        if (currentIndex > 0) {
+          currentIndex--;
+          animateReflectionChange(currentIndex);
+          event.preventDefault();
+        }
+        break;
+
+      case "ArrowRight":
+        if (currentIndex < reflections.length - 1) {
+          currentIndex++;
+          animateReflectionChange(currentIndex);
+          event.preventDefault();
+        }
+        break;
+
+      case "Home":
+        currentIndex = 0;
+        animateReflectionChange(currentIndex);
+        event.preventDefault();
+        break;
+
+      case "End":
+        currentIndex = reflections.length - 1;
+        animateReflectionChange(currentIndex);
+        event.preventDefault();
+        break;
+    }
+  });
+
+
+  // Initialize reflection 01 and its button states.
+  renderReflection(currentIndex);
+})();
+
+/* =========================================
+   SOCIAL LINK ARCHIVE // THE STAR ARCANA
+   ========================================= */
+

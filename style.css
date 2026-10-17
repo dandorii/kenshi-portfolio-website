@@ -1088,3 +1088,480 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
   display: block;
   max-width: 100%;
 }
+
+
+/* =========================================
+   SOCIAL LINK ARCHIVE // THE STAR ARCANA
+   ========================================= */
+
+.social-link-section {
+  position: relative;
+  margin-top: 6rem;
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid rgba(104, 190, 255, 0.35);
+  background:
+    linear-gradient(135deg, rgba(24, 66, 120, 0.28), transparent 60%),
+    var(--panel, #0b1426);
+}
+
+.social-link-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(104, 190, 255, 0.2);
+}
+
+.social-link-classification {
+  margin: 0;
+  color: #75c7ff;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+}
+
+.social-link-main {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.75fr) minmax(0, 1.6fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  padding-top: 2.5rem;
+}
+
+.social-link-arcana {
+  align-self: start;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border: 1px solid rgba(104, 190, 255, 0.3);
+  background: linear-gradient(
+    160deg,
+    rgba(49, 128, 207, 0.2),
+    rgba(8, 19, 38, 0.8)
+  );
+}
+
+.social-link-star {
+  display: block;
+  margin-bottom: 1rem;
+  color: #8bd2ff;
+  font-size: clamp(4rem, 10vw, 7rem);
+  line-height: 1;
+  text-shadow: 0 0 25px rgba(86, 181, 255, 0.4);
+}
+
+.social-link-arcana .eyebrow {
+  margin-bottom: 0.5rem;
+}
+
+.social-link-arcana h2 {
+  margin: 0;
+  color: #e8f5ff;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: 0.12em;
+}
+
+.social-link-subtitle {
+  margin: 0.75rem 0 0;
+  color: #8eb8dc;
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+
+.social-link-content {
+  min-width: 0;
+}
+
+.social-link-content > .eyebrow {
+  color: #78c7ff;
+  letter-spacing: 0.12em;
+}
+
+.social-link-content h2 {
+  margin: 1rem 0 1.5rem;
+  color: #f0f7ff;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.social-link-content h2 em {
+  color: #78c7ff;
+  font-style: normal;
+}
+
+.social-link-content blockquote {
+  margin: 0;
+  padding-left: 1.25rem;
+  border-left: 2px solid #439fe8;
+  color: #c2d4e8;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  white-space: normal;
+}
+
+.social-link-progress {
+  margin-top: 2rem;
+}
+
+.social-link-progress-track {
+  width: 100%;
+  height: 5px;
+  overflow: hidden;
+  background: rgba(125, 177, 219, 0.16);
+}
+
+.social-link-progress-fill {
+  width: 10%;
+  height: 100%;
+  background: linear-gradient(90deg, #328fe0, #8bd2ff);
+  transition: width 300ms ease;
+}
+
+.social-link-progress p {
+  margin: 0.65rem 0 0;
+  color: #83bce8;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+}
+
+.social-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 0.9rem 1.15rem;
+  border: 1px solid #62baff;
+  background: rgba(37, 111, 182, 0.18);
+  color: #e8f5ff;
+  font: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.social-link-button:hover {
+  border-color: #b0e0ff;
+  background: rgba(54, 145, 220, 0.32);
+  transform: translateY(-2px);
+}
+
+.social-link-button:focus-visible {
+  outline: 2px solid #b0e0ff;
+  outline-offset: 4px;
+}
+
+.social-link-footnote {
+  margin-top: 1.25rem;
+  color: #8198b1;
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+  .social-link-main {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+  }
+
+  .social-link-arcana {
+    padding: 1.25rem;
+  }
+
+  .social-link-star {
+    font-size: 4rem;
+  }
+
+  .social-link-button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-link-progress-fill,
+  .social-link-button {
+    transition: none;
+  }
+}
+
+.social-link-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.social-link-controls .social-link-button {
+  margin-top: 0;
+}
+
+.social-link-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 640px) {
+  .social-link-controls {
+    flex-direction: column;
+  }
+}
+
+
+/* =========================================
+   SECRET ARCHIVE // HIDDEN ACCESS
+   ========================================= */
+
+.archive-secret-access {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(120, 190, 220, 0.12);
+}
+
+/* Hidden star trigger */
+.secret-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid rgba(120, 190, 220, 0.2);
+  border-radius: 50%;
+  background: rgba(12, 24, 42, 0.65);
+  color: rgba(150, 205, 230, 0.65);
+  font: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.secret-trigger:hover,
+.secret-trigger:focus-visible {
+  color: #8be9ff;
+  border-color: rgba(139, 233, 255, 0.75);
+  background: rgba(56, 189, 248, 0.1);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.12);
+  outline: none;
+}
+
+.secret-trigger:hover {
+  transform: rotate(45deg);
+}
+
+/* Unlocked secret-menu button */
+#secret-unlock {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid rgba(139, 233, 255, 0.4);
+  background: rgba(56, 189, 248, 0.07);
+  color: #8be9ff;
+  font-family: inherit;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+#secret-unlock:hover,
+#secret-unlock:focus-visible {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #8be9ff;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.1);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+#secret-unlock span {
+  font-size: 1rem;
+  transition: transform 0.25s ease;
+}
+
+#secret-unlock:hover span {
+  transform: translate(2px, -2px);
+}
+
+/* Secret page return button */
+#secret-return {
+  border-color: rgba(139, 233, 255, 0.3);
+  color: #8be9ff;
+}
+
+#secret-return:hover,
+#secret-return:focus-visible {
+  border-color: #8be9ff;
+  background: rgba(56, 189, 248, 0.08);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.1);
+}
+
+/* Keep hidden elements hidden even when other CSS sets display */
+.secret-page[hidden],
+#secret-unlock[hidden] {
+  display: none !important;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .secret-trigger,
+  #secret-unlock,
+  #secret-unlock span {
+    transition: none;
+  }
+
+  .secret-trigger:hover,
+  #secret-unlock:hover {
+    transform: none;
+  }
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .archive-secret-access {
+    gap: 8px;
+  }
+
+  #secret-unlock {
+    max-width: 100%;
+    padding: 9px 10px;
+    font-size: 0.65rem;
+  }
+}
+
+/* Prevent the secret-page title from overflowing */
+#secret-page .social-link-arcana {
+  min-width: 0;
+  max-width: 100%;
+}
+
+#secret-page .social-link-arcana h2 {
+  max-width: 100%;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-height: 1.1;
+}
+
+
+/* Smaller UNWRITTEN heading on the secret archive page */
+
+#secret-page .social-link-arcana h2 {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+
+/* SOCIAL LINK ARCHIVE // REFLECTION SELECTOR */
+.social-link-selector {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.social-link-selector label {
+  color: var(--muted, #94a3b8);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+}
+
+.social-link-selector select {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(120, 190, 220, 0.25);
+  border-radius: 0;
+  background: rgba(8, 13, 24, 0.9);
+  color: inherit;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.social-link-selector select:hover,
+.social-link-selector select:focus-visible {
+  border-color: #38bdf8;
+  outline: 2px solid transparent;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.12);
+}
+
+
+/* SOCIAL LINK ARCHIVE // REFLECTION TRANSITION */
+#social-link-title,
+#social-link-reflection {
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+#social-link-title.reflection-changing,
+#social-link-reflection.reflection-changing {
+  opacity: 0;
+  transform: translateY(5px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #social-link-title,
+  #social-link-reflection {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-link-progress-fill {
+    transition: none;
+  }
+}
+
+
+/* SOCIAL LINK ARCHIVE // RANK-UP FEEDBACK */
+#social-link-rank.rank-up {
+  animation: social-link-rank-up 320ms ease-out;
+}
+
+@keyframes social-link-rank-up {
+  0% {
+    opacity: 0.65;
+    text-shadow: 0 0 0 transparent;
+    transform: translateY(2px);
+  }
+
+  55% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.65);
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 0 transparent;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #social-link-rank.rank-up {
+    animation: none;
+  }
+}

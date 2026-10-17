@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#061a2b">
+  <meta name="description" content="Kenshi's personal web space — cybersecurity projects, experiments, and interests.">
+  <title>Kenshi // Personal Archive</title>
+  <link rel="icon" href="assets/kenshi-monogram-badge.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="boot-screen" id="bootScreen" role="status" aria-live="polite">
+    <div class="boot-anim" aria-hidden="true"></div>
+    <p class="boot-kicker">PERSONAL ARCHIVE SYSTEM</p>
+    <div class="boot-log" id="bootLog">INITIALIZING INTERFACE...</div>
+    <div class="boot-track"><span id="bootProgress"></span></div>
+    <button id="skipBoot" class="text-button" type="button">SKIP INTRO ↵</button>
+  </div>
+
+  <main class="site-shell" id="siteShell" tabindex="-1">
+    <a class="skip-link" href="#home">Skip to content</a>
+
+    <header class="topbar">
+      <a href="#home" class="wordmark" id="wordmark" aria-label="Kenshi home">KENSHI<span>_</span></a>
+      <div class="top-meta"><span class="live-dot" aria-hidden="true"></span> PERSONAL ARCHIVE <span class="meta-sep" aria-hidden="true">/</span> <span id="localTime">LOCAL TIME</span></div>
+      <button id="soundToggle" class="sound-button" type="button" aria-pressed="false" title="Toggle interface sounds">
+        <span class="sound-icon" aria-hidden="true">♫</span> SOUND: <span id="soundState">OFF</span>
+      </button>
+    </header>
+
+    <section class="hero panel" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="tiny-cross" aria-hidden="true">✳</span> WELCOME TO MY LITTLE CORNER OF THE WEB</p>
+        <h1>Somewhere<br><em>between</em> <span class="cyan">curiosity</span><br>and creation.</h1>
+        <p class="intro">I'm Kenshi — a cybersecurity student, builder, and collector of little obsessions. This is my personal archive: projects in progress, things I'm learning, and pieces of life outside the terminal.</p>
+        <dl class="status-strip" aria-label="Current status">
+          <div><dt>STATUS</dt><dd><span class="live-dot" aria-hidden="true"></span> LEARNING / BUILDING</dd></div>
+          <div><dt>FOCUS</dt><dd>Cybersecurity</dd></div>
+        </dl>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects" data-sound>EXPLORE PROJECTS <span aria-hidden="true">↘</span></a>
+          <a class="button button-quiet" href="#about" data-sound>GET TO KNOW ME</a>
+        </div>
+      </div>
+      
+      <div class="hero-art hero-art-gif" aria-hidden="true">
+        <img
+          src="assets/banner.gif"
+          alt=""
+          class="hero-gif"
+          width="500"
+          height="500"
+        >
+        <div class="art-label label-top">ARCHIVE No. 001</div>
+        <div class="art-label label-bottom">STAY CURIOUS — KEEP BUILDING</div>
+      </div>
+
+      <div class="hero-foot"><span>PHASE 01 / INTRODUCTION</span><span>SCROLL TO CONTINUE ↓</span></div>
+    </section>
+
+    <div class="wipe-strip" aria-hidden="true"></div>
+
+    <nav class="menu panel" aria-label="Main navigation">
+      <div class="section-tag">QUICK ACCESS <span>SELECT A DESTINATION</span></div>
+      <div class="menu-list">
+        <a class="menu-item active" href="#projects" aria-current="true" data-sound><span class="menu-num">01</span><span class="menu-name">PROJECT ARCHIVE</span><span class="menu-desc">Things I've built</span><span class="menu-arrow" aria-hidden="true">↗</span></a>
+        <a class="menu-item" href="#updates" data-sound><span class="menu-num">02</span><span class="menu-name">UPDATE LOG</span><span class="menu-desc">Notes and changes</span><span class="menu-arrow" aria-hidden="true">↗</span></a>
+        <a class="menu-item" href="#about" data-sound><span class="menu-num">03</span><span class="menu-name">ABOUT KENSHI</span><span class="menu-desc">The person behind it</span><span class="menu-arrow" aria-hidden="true">↗</span></a>
+        <a class="menu-item" href="#interests" data-sound><span class="menu-num">04</span><span class="menu-name">SIDE QUESTS</span><span class="menu-desc">Interests & collections</span><span class="menu-arrow" aria-hidden="true">↗</span></a>
+        <a class="menu-item" href="#links" data-sound><span class="menu-num">05</span><span class="menu-name">TRANSMISSION</span><span class="menu-desc">Find me elsewhere</span><span class="menu-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+
+    <section class="section-block" id="projects">
+      <div class="section-heading"><div><p class="eyebrow">01 / SELECTED WORK</p><h2>Project <em>archive</em></h2></div><p class="section-note">Small steps, real experiments.<br>Always learning by building.</p></div>
+      <div class="project-grid">
+        <article class="project-card project-featured" aria-labelledby="phishguard-title">   
+          <div class="project-visual phish-visual">
+            <img
+              src="assets/phishguard.gif"
+              alt="PhishGuard phishing URL and email analysis demo"
+              class="phish-gif"
+              loading="lazy"
+            />
+          </div>
+          <div class="project-content">
+            <div class="project-meta"><span>01 — WEB SECURITY</span><span>PYTHON / FLASK</span></div>
+            <h3 id="phishguard-title">PhishGuard</h3>
+            <p>A phishing URL and email analyzer with rule-based phishing detection, a saved analysis history, and a SOC-inspired dashboard.</p>
+            <div class="tag-row" aria-label="Technologies used"><span>Python</span><span>Flask</span><span>JavaScript</span><span>SQLite</span><span>Security</span></div>
+            <a class="project-link" href="https://phishguard-ujkh.onrender.com" target="_blank" rel="noopener noreferrer" data-sound>OPEN LIVE DEMO <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </article>
+        <article class="project-card" aria-labelledby="yoru-title">     
+          <div class="project-visual yoru-visual" aria-hidden="true">
+            <img
+              src="assets/terminal.gif"
+              alt=""
+              class="project-gif"
+              loading="lazy"
+            >
+          </div>
+          <div class="project-content">
+            <div class="project-meta"><span>02 — LEARNING TOOL</span><span>PLANNED · NOT RELEASED</span></div>
+            <h3 id="yoru-title">YORU Terminal</h3>
+            <p>A planned Japanese-inspired terminal simulator for learning cybersecurity. It is not publicly available yet, and the preview above is a concept, not a running app.</p>
+            <details class="planned-details" open>
+              <summary>PLANNED FEATURES <span class="summary-mark" aria-hidden="true"></span></summary>
+              <ul class="planned-list">
+                <li>Interactive cybersecurity missions</li>
+                <li>Phishing and log investigation</li>
+                <li>Security puzzle challenges</li>
+                <li>Incident response simulations</li>
+                <li>XP, ranks, scores, and saved progress</li>
+              </ul>
+            </details>
+            <div class="tag-row" aria-label="Planned technologies"><span>Python</span><span>Rich</span><span>SQLite</span><span>CTF</span></div>
+            <a class="project-link" href="#links" data-sound>FOLLOW THE BUILD <span aria-hidden="true">↘</span></a>
+          </div>
+        </article>
+        <article class="project-card compact-card">
+          <div class="compact-icon" aria-hidden="true">⌘</div>
+          <div class="project-content">
+            <div class="project-meta"><span>03 — NEXT EXPERIMENT</span><span>ON THE BOARD</span></div>
+            <h3>More experiments soon.</h3>
+            <p>Small tools, lab notes, and ideas that deserve a place to grow. This space will evolve as I do.</p>
+            <a class="project-link" href="#updates" data-sound>READ THE UPDATE LOG <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block" id="updates" aria-labelledby="updates-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">02 / UPDATE LOG</p>
+          <h2 id="updates-title">Update <em>log</em></h2>
+        </div>
+        <p class="section-note">
+          Development notes, experiments, and things I've learned.
+          <br>Documenting the process, one update at a time.
+        </p>
+      </div>
+
+      <div class="update-list">
+
+        <!-- OCTOBER 17, 2026 -->
+        <details class="update-entry" open>
+          <summary>
+            <span class="update-date">
+              <time datetime="2026-10-17">17/10/2026</time>
+            </span>
+            <span class="update-title">Personal Archive // Visual Refinements</span>
+            <span class="tag">DESIGN</span>
+          </summary>
+          <div class="update-body">
+            <p>
+              Continued refining the About Me section and the visual identity
+              of my personal website. I'm replacing the original profile emblem
+              with a personal profile picture and planning to use a Persona 3 GIF
+              for the hero artwork.
+            </p>
+            <p>
+              The goal is to make the site feel more personal while preserving
+              its dark interface, cyan accents, and retro game-inspired atmosphere.
+            </p>
+          </div>
+        </details>
+
+        
+        <!-- OCTOBER 17, 2026 — YORU TERMINAL -->
+        <details class="update-entry" open>
+          <summary>
+            <span class="update-date">
+              <time datetime="2026-10-17">17/10/2026</time>
+            </span>
+            <span class="update-title">YoruTerminal // Core Milestone</span>
+            <span class="tag">PROJECT</span>
+          </summary>
+
+          <div class="update-body">
+            <p>
+              Reached a major development milestone for YoruTerminal, a
+              terminal-based cybersecurity learning simulator built with Python.
+              Inspired by tactical interfaces and Japanese aesthetics, the project
+              turns cybersecurity concepts into interactive, mission-based challenges.
+            </p>
+
+            <p>
+              The current build includes local account authentication, SQLite-based
+              progress tracking, XP and ranks, and four standalone missions:
+              Phishing Detective, Log Investigator, Security Puzzle Room, and
+              Incident Response Simulator.
+            </p>
+
+            <p>
+              I also implemented a Rich-powered terminal interface, a mission
+              history system, and a dedicated Windows launcher. The project
+              reached <strong>101 passing tests</strong>, marking an important
+              step toward a stable first release.
+            </p>
+
+            <p class="update-highlight">
+              MILESTONE: 101 TESTS PASSED // VERSION 1.0.0 PREPARATION
+            </p>
+
+            <p>
+              This project is helping me practice Python, authentication,
+              database design, testing, and the process of turning an idea
+              into a structured software application.
+            </p>
+          </div>
+        </details>
+
+
+        <!-- OCTOBER 17, 2026 -->
+        <details class="update-entry">
+          <summary>
+            <span class="update-date">
+              <time datetime="2026-10-17">17/10/2026</time>
+            </span>
+            <span class="update-title">Soundtrack Integration</span>
+            <span class="tag">EXPERIMENT</span>
+          </summary>
+          <div class="update-body">
+            <p>
+              Started integrating a Spotify track into the Now Playing panel.
+              Instead of building a separate audio playback system, I'm using
+              Spotify's embedded player so playback can be handled by Spotify.
+            </p>
+            <p>
+              I'm also refining the player presentation to match the website's
+              archive-style interface. Embed compatibility and browser behavior
+              are still being checked.
+            </p>
+          </div>
+        </details>
+
+        <!-- OCTOBER 17, 2026 -->
+        <details class="update-entry">
+          <summary>
+            <span class="update-date">
+              <time datetime="2026-10-17">17/10/2026</time>
+            </span>
+            <span class="update-title">Interface & Interaction Design</span>
+            <span class="tag">FRONTEND</span>
+          </summary>
+          <div class="update-body">
+            <p>
+              Continued working on the site's interactive details, including
+              its boot sequence, live clock, interface sound controls,
+              expandable update entries, and hidden interactions.
+            </p>
+            <p>
+              I'm learning how small JavaScript behaviors and thoughtful CSS
+              styling can make a static website feel more like a personal
+              digital environment.
+            </p>
+          </div>
+        </details>
+
+        <!-- EARLIER PROJECT MILESTONE -->
+        <details class="update-entry">
+          <summary>
+            <span class="update-date">
+              <time datetime="2026-10-14">14/10/2026</time>
+            </span>
+            <span class="update-title">PhishGuard // Deployment Milestone</span>
+            <span class="tag">CYBERSECURITY</span>
+          </summary>
+          <div class="update-body">
+            <p>
+              Continued developing PhishGuard, my phishing URL and email
+              analysis web application built with Python, Flask, and SQLite.
+              The project includes analysis tools, risk assessment,
+              and an analysis history.
+            </p>
+            <p>
+              I also worked on responsive navigation and continued exploring
+              deployment, application security, and the process of maintaining
+              a publicly accessible web project.
+            </p>
+            <p>
+              <a href="https://phishguard-ujkh.onrender.com"
+                target="_blank"
+                rel="noopener noreferrer">
+                Visit PhishGuard ↗
+              </a>
+            </p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <section class="about-layout section-block" id="about">
+      <div class="section-heading"><div><p class="eyebrow">03 / PROFILE DATA</p><h2>About <em>me</em></h2></div><span class="data-stamp">USER FILE: KENSHI_001</span></div>
+      <div class="about-panel panel">
+        <div class="profile-side">
+          
+          <div class="profile-emblem">
+            <img
+              src="assets/profile.gif"
+              alt="Kenshi's profile picture"
+              class="profile-pfp"
+              width="120"
+              height="120"
+            >
+          </div>
+          <p class="profile-name">KENSHI</p><p class="profile-role">CYBERSECURITY STUDENT</p>
+          <div class="profile-divider"></div>
+          <p class="profile-small">CURRENT STATUS</p><p class="profile-status"><span class="live-dot" aria-hidden="true"></span> LEARNING / BUILDING</p>
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow">A WORK IN PROGRESS — JUST LIKE EVERYONE ELSE</p>
+          <p>I'm a second-year BS Cybersecurity student who enjoys understanding how technology works, where it breaks, and how to make it safer. I learn best by making things, testing ideas, and documenting what I discover along the way.</p>
+          <p>Outside tech, I'm into Gunpla and model kits, gaming, PC building, cars and diecast collecting. I like projects that feel useful, personal, and a little bit experimental.</p>
+          <div class="fact-grid"><div><span>FOCUS</span><b>Cybersecurity</b></div><div><span>APPROACH</span><b>Learn by building</b></div><div><span>PHILOSOPHY</span><b>Stay curious</b></div><div><span>STATUS</span><b>Always in progress</b></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block" id="interests">
+      <div class="section-heading"><div><p class="eyebrow">04 / OFFLINE MODE</p><h2>Side <em>quests</em></h2></div><p class="section-note">Not everything needs to be<br>productive to matter.</p></div>
+
+      
+
+<section class="now-playing panel" aria-labelledby="np-title">
+  <div class="np-header">
+    <h3 id="np-title">NOW PLAYING</h3>
+    <span class="tag">SPOTIFY / 01</span>
+  </div>
+
+  <div class="np-body spotify-layout">
+    <div class="np-art" aria-hidden="true">
+      <span>♪</span>
+      <span class="art-index">NO. 001</span>
+    </div>
+
+    <div class="np-info">
+      <p class="np-kicker">PERSONAL ARCHIVE // SOUND LOG</p>
+      <p class="np-track">Memories of You -Reload-</p>
+      <p class="np-artist">Azumi Takashi, ATLUS Sound Team, ATLUS GAME MUSIC</p>
+
+      <div class="np-bars" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+      </div>
+
+      <p class="np-note">
+        A song from my current rotation.
+      </p>
+    </div>
+  </div>
+
+  <div class="spotify-frame">
+    <div class="spotify-frame-label">
+      <span>PLAYBACK TERMINAL</span>
+      <span class="spotify-status">
+        <span class="status-dot"></span>
+        SPOTIFY EMBED
+      </span>
+    </div>
+
+    
+<iframe
+  title="Spotify music player"
+  src="https://open.spotify.com/embed/track/3R0XM0PaKh2R7WYF8UJYe0?theme=0"
+  width="100%"
+  height="152"
+  style="border: 0; border-radius: 8px;"
+  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+  loading="lazy"
+></iframe>
+
+  </div>
+
+  <p class="np-footer">
+    SOUNDTRACK TO THE PRESENT MOMENT
+    <span>K // ARCHIVE</span>
+  </p>
+</section>
+
+
+
+      <div class="interest-grid">
+        <details class="interest-card">
+          <summary><span class="interest-number">A / 01</span><span class="interest-symbol" aria-hidden="true">▧</span><span class="interest-title">Gunpla & model kits</span></summary>
+          <p>Builds, kitbashes, and the satisfaction of finishing one tiny detail at a time.</p>
+        </details>
+        <details class="interest-card">
+          <summary><span class="interest-number">A / 02</span><span class="interest-symbol" aria-hidden="true">◈</span><span class="interest-title">Games & worlds</span></summary>
+          <p>Games that leave an atmosphere, a soundtrack, or a story in your head long after.</p>
+        </details>
+        <details class="interest-card">
+          <summary><span class="interest-number">A / 03</span><span class="interest-symbol" aria-hidden="true">⌁</span><span class="interest-title">PCs & technology</span></summary>
+          <p>Hardware tinkering, software experiments, and making the most of what I have.</p>
+        </details>
+        <details class="interest-card">
+          <summary><span class="interest-number">A / 04</span><span class="interest-symbol" aria-hidden="true">◉</span><span class="interest-title">Cars & diecast</span></summary>
+          <p>JDM legends, miniature details, and collecting pieces of automotive culture.</p>
+        </details>
+        <details class="interest-card">
+          <summary><span class="interest-number">A / 05</span><span class="interest-symbol" aria-hidden="true">♜</span><span class="interest-title">Tabletop games</span></summary>
+          <p>I enjoy tabletop games for the strategy, creativity, and social interaction they bring. I like how every session can turn into a different experience, whether it involves planning ahead, solving problems, or working together with other players.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="contact-panel panel" id="links" aria-labelledby="links-title">
+      <div><p class="eyebrow">05 / END OF TRANSMISSION</p><h2 id="links-title">Let's keep<br><em>in touch.</em></h2><p class="contact-copy">I'm always glad to connect with people who enjoy tech, making things, and learning together. For now, GitHub and LinkedIn are the best ways to reach me.</p></div>
+      <div class="contact-links">
+        <a href="https://github.com/dandorii" target="_blank" rel="noopener noreferrer" data-sound><span>PRIMARY CONTACT</span><b>GitHub — code & experiments</b><i aria-hidden="true">↗</i><span class="visually-hidden"> (opens in a new tab)</span></a>
+        <a href="https://phishguard-ujkh.onrender.com" target="_blank" rel="noopener noreferrer" data-sound><span>PHISHGUARD</span><b>Try the live demo</b><i aria-hidden="true">↗</i><span class="visually-hidden"> (opens in a new tab)</span></a>
+        <a href="https://www.linkedin.com/in/marco-reyes-826617309/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" data-sound><span>PROFESSIONAL</span><b>LinkedIn — connect & network</b><i aria-hidden="true">↗</i><span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+      <div class="contact-orbit" aria-hidden="true">K</div>
+    </section>
+
+    <footer class="footer"><span>© <span id="year"></span> KENSHI — PERSONAL ARCHIVE</span><span>MADE WITH CURIOSITY <b aria-hidden="true">✳</b> HOSTED ON NEOCITIES</span><a href="#home" data-sound>BACK TO TOP ↑</a></footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

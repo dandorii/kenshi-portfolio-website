@@ -237,17 +237,17 @@ document.addEventListener("keydown", (event) => {
 
 
 
+
 /* =========================================
    SECRET ARCHIVE // HIDDEN MENU
    ========================================= */
 
 (() => {
   const trigger = document.getElementById("secret-trigger");
-  const socialSection = document.getElementById("social-link");
+  const socialSection = document.getElementById("social-link-main");
   const secretPage = document.getElementById("secret-page");
   const returnButton = document.getElementById("secret-return");
 
-  // Stop safely if the required HTML elements are missing.
   if (!trigger || !socialSection || !secretPage || !returnButton) {
     return;
   }
@@ -256,31 +256,29 @@ document.addEventListener("keydown", (event) => {
   let resetTimer;
   let unlocked = false;
 
-  // Inspect the archive with five clicks within 2.5 seconds.
+  function showSection(section) {
+    section.hidden = false;
+    section.setAttribute("tabindex", "-1");
+    section.scrollIntoView({
+      behavior: window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches ? "auto" : "smooth",
+      block: "start"
+    });
+    section.focus({ preventScroll: true });
+  }
+
   trigger.addEventListener("click", () => {
-    // Once transformed, the button opens the hidden memory.
     if (unlocked) {
       socialSection.hidden = true;
-      secretPage.hidden = false;
-
-      secretPage.setAttribute("tabindex", "-1");
-      secretPage.scrollIntoView({
-        behavior: window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
-        ).matches ? "auto" : "smooth",
-        block: "start"
-      });
-
-      secretPage.focus({ preventScroll: true });
+      showSection(secretPage);
 
       if (typeof showToast === "function") {
         showToast("UNLISTED MEMORY // OPENED");
       }
-
       if (typeof playTone === "function") {
         playTone(740, 0.1, "triangle");
       }
-
       return;
     }
 
@@ -296,10 +294,8 @@ document.addEventListener("keydown", (event) => {
       clearTimeout(resetTimer);
       unlocked = true;
 
-      // Transform the same symbol into the memory button.
       trigger.innerHTML =
         'UNLISTED MEMORY <span aria-hidden="true">↗</span>';
-
       trigger.classList.remove("secret-trigger");
       trigger.classList.add("social-link-button");
       trigger.setAttribute("aria-label", "Open unlisted memory");
@@ -308,37 +304,25 @@ document.addEventListener("keydown", (event) => {
       if (typeof showToast === "function") {
         showToast("UNLISTED RECORD DETECTED");
       }
-
       if (typeof playTone === "function") {
         playTone(880, 0.12, "triangle");
       }
     }
   });
 
-  // Return to the original ten-reflection archive.
   returnButton.addEventListener("click", () => {
     secretPage.hidden = true;
-    socialSection.hidden = false;
-
-    socialSection.setAttribute("tabindex", "-1");
-    socialSection.scrollIntoView({
-      behavior: window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches ? "auto" : "smooth",
-      block: "start"
-    });
-
-    socialSection.focus({ preventScroll: true });
+    showSection(socialSection);
 
     if (typeof showToast === "function") {
       showToast("RETURNING TO PERSONAL ARCHIVE");
     }
-
     if (typeof playTone === "function") {
       playTone(520, 0.08, "sine");
     }
   });
 })();
+
 
 
 

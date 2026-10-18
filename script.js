@@ -6,7 +6,7 @@
   - Easter egg: type Y, O, R, U in order anywhere on the page.
   - Without JavaScript, the page shows all content and skips the boot screen.
   - Update log entries and side quests use <details> elements, so they expand without JavaScript.
-  - The now-playing panel is visual only. Its controls stay disabled until licensed audio is added.
+  - The Now Playing panel is a Spotify embed, so the page has no script for it.
 */
 
 // Switch the page from "no-js" to "js". CSS only hides content behind the boot screen
@@ -149,15 +149,15 @@ function playTone(frequency = 620, duration = 0.045, type = "sine") {
 
 if (soundToggle && soundState) {
   soundToggle.addEventListener("click", () => {
-  soundEnabled = !soundEnabled;
-  soundToggle.setAttribute("aria-pressed", String(soundEnabled));
-  soundState.textContent = soundEnabled ? "ON" : "OFF";
-  if (soundEnabled) {
-    playTone(740, 0.09, "triangle");
-    showToast("INTERFACE SOUND ENABLED");
+    soundEnabled = !soundEnabled;
+    soundToggle.setAttribute("aria-pressed", String(soundEnabled));
+    soundState.textContent = soundEnabled ? "ON" : "OFF";
+    if (soundEnabled) {
+      playTone(740, 0.09, "triangle");
+      showToast("INTERFACE SOUND ENABLED");
     } else {
-    showToast("INTERFACE SOUND MUTED");
-  }
+      showToast("INTERFACE SOUND MUTED");
+    }
   });
 }
 
@@ -273,12 +273,8 @@ document.addEventListener("keydown", (event) => {
       socialSection.hidden = true;
       showSection(secretPage);
 
-      if (typeof showToast === "function") {
-        showToast("UNLISTED MEMORY // OPENED");
-      }
-      if (typeof playTone === "function") {
-        playTone(740, 0.1, "triangle");
-      }
+      showToast("UNLISTED MEMORY // OPENED");
+      playTone(740, 0.1, "triangle");
       return;
     }
 
@@ -301,12 +297,8 @@ document.addEventListener("keydown", (event) => {
       trigger.setAttribute("aria-label", "Open unlisted memory");
       trigger.setAttribute("title", "Open unlisted memory");
 
-      if (typeof showToast === "function") {
-        showToast("UNLISTED RECORD DETECTED");
-      }
-      if (typeof playTone === "function") {
-        playTone(880, 0.12, "triangle");
-      }
+      showToast("UNLISTED RECORD DETECTED");
+      playTone(880, 0.12, "triangle");
     }
   });
 
@@ -314,12 +306,8 @@ document.addEventListener("keydown", (event) => {
     secretPage.hidden = true;
     showSection(socialSection);
 
-    if (typeof showToast === "function") {
-      showToast("RETURNING TO PERSONAL ARCHIVE");
-    }
-    if (typeof playTone === "function") {
-      playTone(520, 0.08, "sine");
-    }
+    showToast("RETURNING TO PERSONAL ARCHIVE");
+    playTone(520, 0.08, "sine");
   });
 })();
 
@@ -351,114 +339,6 @@ if ("IntersectionObserver" in window) {
 }
 
 
-/* NOW PLAYING — optional music player, independent of interface sounds. */
-(() => {
-  const audio = document.getElementById("portfolioAudio");
-  const playButton = document.getElementById("npPlay");
-  const volumeSlider = document.getElementById("npVolume");
-  const progressBar = document.getElementById("npProgress");
-  const statusText = document.getElementById("npStatus");
-  const visualizer = document.getElementById("npBars");
-
-  // Leave the rest of the website working if the player HTML is absent.
-  if (!audio || !playButton || !volumeSlider ||
-      !progressBar || !statusText) return;
-
-  audio.volume = Number(volumeSlider.value);
-
-  function updatePlayButton(playing) {
-    playButton.textContent = playing ? "Ⅱ" : "▶";
-    playButton.setAttribute(
-      "aria-label",
-      playing ? "Pause audio" : "Play audio"
-    );
-  }
-
-  function stopVisualizer() {
-    visualizer?.classList.remove("is-playing");
-  }
-
-  playButton.addEventListener("click", async () => {
-    if (audio.paused) {
-      try {
-        await audio.play();
-      } catch {
-        statusText.textContent =
-          "Playback failed. Check the audio URL and file permissions.";
-      }
-    } else {
-      audio.pause();
-    }
-  });
-
-  audio.addEventListener("play", () => {
-    updatePlayButton(true);
-    visualizer?.classList.add("is-playing");
-    statusText.textContent = "Audio is playing.";
-  });
-
-  audio.addEventListener("pause", () => {
-    updatePlayButton(false);
-    stopVisualizer();
-
-    if (!audio.ended) {
-      statusText.textContent = "Audio is paused.";
-    }
-  });
-
-  audio.addEventListener("ended", () => {
-    updatePlayButton(false);
-    stopVisualizer();
-    progressBar.style.width = "0%";
-    statusText.textContent = "Track finished.";
-  });
-
-  audio.addEventListener("timeupdate", () => {
-    if (Number.isFinite(audio.duration) && audio.duration > 0) {
-      const progress = (audio.currentTime / audio.duration) * 100;
-      progressBar.style.width = `${progress}%`;
-    }
-  });
-
-  audio.addEventListener("error", () => {
-    updatePlayButton(false);
-    stopVisualizer();
-    statusText.textContent =
-      "Audio unavailable. Check the source URL and format.";
-  });
-
-  volumeSlider.addEventListener("input", () => {
-    audio.volume = Number(volumeSlider.value);
-    audio.muted = audio.volume === 0;
-  });
-})();
-
-
-/* NOW PLAYING — decorative equalizer toggle */
-(() => {
-  const visualizer = document.querySelector(".spotify-layout .np-bars");
-
-  if (!visualizer) return;
-
-  visualizer.setAttribute("role", "button");
-  visualizer.setAttribute("tabindex", "0");
-  visualizer.setAttribute("aria-label", "Toggle equalizer animation");
-  visualizer.setAttribute("aria-pressed", "false");
-
-  function toggleVisualizer() {
-    const isPlaying = visualizer.classList.toggle("is-playing");
-    visualizer.setAttribute("aria-pressed", String(isPlaying));
-  }
-
-  visualizer.addEventListener("click", toggleVisualizer);
-
-  visualizer.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      toggleVisualizer();
-    }
-  });
-})();
 
 
 
@@ -577,44 +457,43 @@ if ("IntersectionObserver" in window) {
   });
 
   
-function renderReflection(index) {
-  if (index < 0 || index >= reflections.length) {
-    return;
+  function renderReflection(index) {
+    if (index < 0 || index >= reflections.length) {
+      return;
+    }
+
+    const entry = reflections[index];
+    const rank = index + 1;
+    const progress = (rank / reflections.length) * 100;
+
+    rankLabel.textContent =
+      `SOCIAL LINK // RANK ${String(rank).padStart(2, "0")}`;
+
+    title.textContent = entry.title;
+    reflection.textContent = entry.text;
+    reflection.style.whiteSpace = "pre-line";
+
+    progressFill.style.width = `${progress}%`;
+
+    progressLabel.textContent =
+      `REFLECTION ${String(rank).padStart(2, "0")} / ${reflections.length}`;
+
+    const isFirstReflection = index === 0;
+    const isLastReflection = index === reflections.length - 1;
+
+    previousButton.disabled = isFirstReflection;
+    nextButton.disabled = isLastReflection;
+
+    nextButton.innerHTML = isLastReflection
+      ? 'ARCHIVE COMPLETE <span aria-hidden="true">✓</span>'
+      : 'REVEAL NEXT REFLECTION <span aria-hidden="true">→</span>';
+
+    jumpSelector.value = String(index);
+
+    if (isLastReflection) {
+      showToast("STAR ARCANA // ARCHIVE COMPLETE");
+    }
   }
-
-  const entry = reflections[index];
-  const rank = index + 1;
-  const progress = (rank / reflections.length) * 100;
-
-  rankLabel.textContent =
-    `SOCIAL LINK // RANK ${String(rank).padStart(2, "0")}`;
-
-  title.textContent = entry.title;
-  reflection.textContent = entry.text;
-  reflection.style.whiteSpace = "pre-line";
-  reflection.style.display = "block";
-
-  progressFill.style.width = `${progress}%`;
-
-  progressLabel.textContent =
-    `REFLECTION ${String(rank).padStart(2, "0")} / ${reflections.length}`;
-
-  const isFirstReflection = index === 0;
-  const isLastReflection = index === reflections.length - 1;
-
-  previousButton.disabled = isFirstReflection;
-  nextButton.disabled = isLastReflection;
-
-  nextButton.innerHTML = isLastReflection
-    ? 'ARCHIVE COMPLETE <span aria-hidden="true">✓</span>'
-    : 'REVEAL NEXT REFLECTION <span aria-hidden="true">→</span>';
-
-  jumpSelector.value = String(index);
-
-  if (isLastReflection && typeof showToast === "function") {
-    showToast("STAR ARCANA // ARCHIVE COMPLETE");
-  }
-}
   
   
   // Subtle transition when changing reflections.
@@ -693,8 +572,21 @@ function renderReflection(index) {
   });
 
   
-  // Keyboard navigation for the Social Link Archive.
+  // Keyboard navigation for the Social Link Archive. It only runs while the archive
+  // is on screen, so Home, End and the arrow keys still scroll the page elsewhere.
+  const archiveSection = document.getElementById("social-link");
+  let archiveInView = true;
+  if (archiveSection && "IntersectionObserver" in window) {
+    archiveInView = false;
+    new IntersectionObserver(
+      ([entry]) => { archiveInView = entry.isIntersecting; },
+      { rootMargin: "-20% 0px -20% 0px" }
+    ).observe(archiveSection);
+  }
+
   document.addEventListener("keydown", (event) => {
+    if (!archiveInView) return;
+
     // Don't intercept keys while the visitor is typing or using a control.
     const target = event.target;
     const isInteractiveElement = target instanceof Element &&

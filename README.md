@@ -1,209 +1,131 @@
 # Kenshi // Personal Archive
 
-A responsive personal website and cybersecurity portfolio inspired by the visual interface of *Persona 3 Portable*. Built with HTML, CSS, and vanilla JavaScript, the site combines a dark blue interface, geometric artwork, animated transitions, interactive navigation, and personal project showcases.
+A responsive, Persona 3 Portable-inspired personal portfolio built with HTML, CSS, and vanilla JavaScript. Designed as a digital archive for my cybersecurity projects, personal interests, and reflections, with a nostalgic blue-and-cyan interface.
 
-The visual direction is inspired by the game's interface, but the website uses original artwork and CSS effects rather than official *Persona 3* assets. Third-party game and publisher materials are kept separate from the deployable website files.
+**Live Website:** https://kenshidev.neocities.org/
 
-## Live Website
+## Overview
 
-- **Portfolio:** [Kenshi // Personal Archive](YOUR-NEOCITIES-URL)
-- **GitHub:** [github.com/dandorii](https://github.com/dandorii)
-- **Featured Project:** [PhishGuard](https://phishguard-ujkh.onrender.com)
+Kenshi // Personal Archive is a personal website that combines a retro game-inspired interface with a portfolio showcasing my journey as a cybersecurity student.
 
-Replace `YOUR-NEOCITIES-URL` with your actual Neocities website URL before publishing this README.
-
-## Tech Stack
-
-- **HTML5** — page structure and semantic content
-- **CSS3** — responsive layout, visual styling, transitions, and animations
-- **Vanilla JavaScript** — interface interactions, synthesized sound effects, boot sequence, local clock, and easter eggs
-- **SVG, PNG, and GIF** — decorative graphics and visual assets
-- **Google Fonts** — Space Grotesk and DM Mono
-- **Press Start 2P** — locally hosted pixel-style heading font
-
-No frontend frameworks, backend services, or build tools are required.
+The site focuses on original CSS visuals, responsive layouts, interactive navigation, and small hidden details that make exploring the archive more engaging.
 
 ## Features
 
-- Responsive layout for desktop and mobile screens
-- Animated boot sequence with a skip option
-- Automatic boot-screen bypass for visitors who prefer reduced motion
-- Interactive navigation with active-section highlighting
-- Optional interface sounds, disabled by default
-- Local clock updated every 30 seconds
-- Expandable update log and side-quest panels
-- Secret mode activated by clicking the KENSHI wordmark five times within approximately 2.5 seconds between clicks
-- Keyboard easter egg: type `YORU` to trigger the YORU Terminal card animation
-- Progressive enhancement: the main content remains accessible when JavaScript is unavailable
-- Personal project showcase, About section, interests, and contact links
+- **Boot Sequence** — An introductory screen with a skip option.
+- **Project Archive** — Showcases cybersecurity projects and experiments.
+- **About Me** — A profile describing my interests, learning style, and goals.
+- **Side Quests** — A space for hobbies and personal interests.
+- **Transmission** — Links to my online profiles and contact information.
+- **Social Link Archive** — A dedicated page inspired by the Social Link system, featuring ten personal reflections.
+- **Reflection Navigation** — Browse entries using Previous/Next buttons and a reflection selector.
+- **Unlisted Memory** — A hidden entry unlocked through an easter egg.
+- **Responsive Layout** — Content panels adapt to different screen sizes, including desktop, tablet, and mobile.
+- **Sound Toggle** — Optional synthesized interface tones, disabled by default.
+- **Easter Eggs** — Hidden interactions throughout the website.
+
+## Featured Projects
+
+### PhishGuard
+
+A phishing URL and email analyzer designed to help users understand suspicious indicators through rule-based detection and a security-focused interface.
+
+- **Technologies:** Python, Flask, JavaScript, SQLite
+- **Live Demo:** https://phishguard-ujkh.onrender.com
+
+### YORU Terminal
+
+A Japanese-inspired terminal cybersecurity learning simulator concept focused on interactive security missions, saved progress, XP, ranks, and bite-sized challenges.
+
+- **Planned technologies:** Python, Rich, SQLite
 
 ## Project Structure
 
 ```text
-kenshi-personal-archive/
+Kenshi-Personal-Archive/
 ├── index.html
-├── style.css
+├── stylev2.css
 ├── script.js
-├── assets/
-│   ├── fonts/
-│   │   ├── press-start-2p-latin-400-normal.woff2
-│   │   └── OFL-LICENSE-press-start-2p.txt
-│   ├── blue-angle-frame.svg
-│   ├── crosshair-decoration.svg
-│   ├── ui-dots-pattern.svg
-│   ├── kenshi-monogram-badge.png
-│   ├── p3p-inspired-blue-geometric-background.png
-│   ├── menu-selection-arrow.png
-│   ├── diagonal-blue-panel-overlay.png
-│   ├── animated-blue-boot-loop.gif
-│   └── animated-diagonal-wipe.gif
+├── social-link.html
+├── social-link.js
 └── README.md
 ```
 
-The filenames above describe the intended structure. Keep any additional assets referenced by the HTML or CSS in their existing relative locations. The `assets/restricted/` folder and `Website References/` folder are excluded from the public deployment.
+Additional files or folders may exist depending on your local project setup.
 
-## Deployment
+| File | Purpose |
+|---|---|
+| `index.html` | Main portfolio page and its content |
+| `stylev2.css` | Main styling, visual effects, and responsive layout |
+| `script.js` | Shared interactions, sound controls, and easter eggs |
+| `social-link.html` | Social Link Archive page and Unlisted Memory section |
+| `social-link.js` | Reflection content, selector, progress indicator, and Previous/Next navigation |
+| `README.md` | Project documentation and setup instructions |
 
-This project is a static website and can be hosted on Neocities or another static hosting service.
+Keep filenames and capitalization consistent with the references in your HTML.
 
-### Deploy to Neocities
+## Getting Started
 
-1. Make sure `index.html`, `style.css`, `script.js`, and the required `assets/` files are ready.
-2. Open your Neocities site dashboard and launch the file manager.
-3. Upload the website files to the site root, preserving the `assets/` directory structure.
-4. Do not upload `assets/restricted/` or `Website References/`.
-5. Open your live website and perform a hard refresh using `Ctrl + F5`.
-6. Test the fonts, background, menu arrow, animations, navigation, and sound toggle.
+This is a static website and does not require a backend server.
 
-The README is documentation, not a requirement for the website to run. You may upload it if you want it visible among the site's files, but it is not necessary.
+1. Download or clone the repository.
+2. Keep the HTML, CSS, and JavaScript files in their expected locations.
+3. Open `index.html` in a browser to preview the main page.
+4. Open `social-link.html` to preview the Social Link Archive.
 
-### Store the source on GitHub
+Some browser behaviors, including local navigation and sound interactions, may vary when opening files directly. Testing through a local static server can provide a more consistent preview.
 
-1. Commit the website source files and README to your repository.
-2. Verify that all assets referenced by the site are included.
-3. Exclude restricted third-party materials and unnecessary local reference files.
-4. Add the live Neocities URL to the repository description or README.
+## Deploying to Neocities
 
-Uploading changes to GitHub does not automatically update Neocities unless a deployment integration has been configured. Upload updated website files to Neocities separately when necessary.
+1. Sign in to [Neocities](https://neocities.org/) and open your site's dashboard.
+2. Upload or replace the updated files in the appropriate directories:
+   - `index.html`
+   - `stylev2.css`
+   - `script.js`
+   - `social-link.html`
+   - `social-link.js`
+3. Preserve the existing filenames and directory structure.
+4. Open your live website and test the main page and Social Link Archive.
+5. If an older stylesheet appears, perform a hard refresh using `Ctrl + F5`.
 
-## Customization Guide
+Upload only files required by the website. The README, development notes, and reference materials do not need to be published.
 
-### Update Log
+## Customization
 
-The Update Log section in `index.html` currently contains two placeholder entries. Their dates use the `DD/MM/YYYY` placeholder format.
+- **Portfolio content:** Edit `index.html`.
+- **Social Link reflections:** Edit the reflection entries in `social-link.js`.
+- **Visual styling:** Edit `stylev2.css`.
+- **Shared interactions:** Edit `script.js`.
+- **Contact information:** Update the contact configuration in `script.js` and use only an email address you are comfortable publishing.
+- **Project links:** Replace existing URLs when your projects or profiles change.
 
-To add a real entry:
+Test your changes locally before publishing them.
 
-1. Copy an existing `<details class="update-entry">...</details>` block.
-2. Replace its `datetime` attribute with the actual date in `YYYY-MM-DD` format.
-3. Update the displayed date, title, and body.
-4. Remove the `PLACEHOLDER` label.
-5. Place the newest entry first and remove any unused templates.
+## Design Notes
 
-Only publish real updates, completed projects, and verifiable achievements.
+The visual direction draws inspiration from the interface atmosphere of *Persona 3 Portable*, using original CSS artwork, typography, color, and text rather than reproducing game assets.
 
-### About and Interests
+The project does not include Persona 3 character artwork, logos, game fonts, or soundtrack files. Any optional external font imports may require an internet connection.
 
-Edit the About section to reflect your current experience, goals, learning process, and interests.
+## Privacy and Security
 
-The Side Quests section includes personal interests and collection-related content. The Tabletop Games entry is a placeholder and should be customized to reflect your actual interests.
+This is a static portfolio. It does not include a custom backend, account system, or built-in analytics.
 
-### Projects and Contact Links
+Avoid publishing passwords, API keys, private contact details, or other sensitive information in source files or public repositories.
 
-The Transmission and Contact sections contain links to GitHub and the PhishGuard demo.
+## License and Credits
 
-- GitHub: `https://github.com/dandorii`
-- PhishGuard: `https://phishguard-ujkh.onrender.com`
+Created as a personal portfolio and ongoing web development project.
 
-Update these links if your accounts or deployments change. The PhishGuard demo may take a little time to respond after inactivity on its free hosting plan.
+The original code, writing, and CSS-based visual elements are part of this project. Persona 3 Portable and its associated intellectual property belong to their respective rights holders. This is a fan-inspired design, not an official or affiliated product.
 
-No email address is currently published. If you choose to add one, use a `mailto:` link and only publish an address you are comfortable making public.
+## 🌐 Portfolio Versions
 
-### Now-Playing Panel
+Explore the different versions of my personal portfolio.
 
-The Now-Playing panel is currently a visual interface rather than a functional music player. Its playback controls remain disabled, and the interface indicates that playback is unavailable.
+- **[Neocities — Main Portfolio](https://kenshidev.neocities.org/)**  
+  The original public-facing portfolio, without the Personal Archive section.
 
-To enable music playback in the future, use audio you have permission to distribute and implement the required playback functionality. Include relevant licensing information. The website does not autoplay music.
+- **[GitHub — Personal Archive Edition](https://github.com/dandorii/kenshi-personal-archive)**  
+  The version that includes the Social Link Archive, personal reflections, and hidden memories.
 
-### Interface Sounds
-
-Interface sounds are generated using the Web Audio API. They are controlled by the site's sound toggle and are disabled by default.
-
-The site can generate short synthesized tones without requiring separate audio files. Browser policies may require a visitor to interact with the page before audio can play.
-
-## Assets, Licenses, and Attribution
-
-### Original Artwork
-
-The following project graphics are intended to be original assets created for this website:
-
-- `p3p-inspired-blue-geometric-background.png`
-- `menu-selection-arrow.png`
-- `diagonal-blue-panel-overlay.png`
-- `blue-angle-frame.svg`
-- `crosshair-decoration.svg`
-- `ui-dots-pattern.svg`
-- `kenshi-monogram-badge.png`
-- `animated-blue-boot-loop.gif`
-- `animated-diagonal-wipe.gif`
-
-The asset pack's accompanying README permits personal website use without attribution. Retain that documentation if you need to verify the asset terms.
-
-### Heading Font
-
-**Press Start 2P** is provided by The Press Start 2P Project Authors and is used under the SIL Open Font License, version 1.1.
-
-- Font page: https://fonts.google.com/specimen/Press+Start+2P
-- Local file: `assets/fonts/press-start-2p-latin-400-normal.woff2`
-- License: `assets/fonts/OFL-LICENSE-press-start-2p.txt`
-
-The font file is unmodified. Keep the license file alongside the font when distributing or deploying it.
-
-### Body Fonts and External Requests
-
-Space Grotesk and DM Mono are loaded through Google Fonts using the `@import` statement at the top of `style.css`.
-
-When the fonts are requested, visitors' browsers connect to Google's font servers, including `fonts.googleapis.com` and `fonts.gstatic.com`. Those requests may expose visitors' IP addresses and standard connection information to Google.
-
-To avoid the external font requests, remove the Google Fonts `@import` statement. The stylesheet's system-font fallbacks will keep the website readable.
-
-### Restricted Files — Local Only
-
-The local `assets/restricted/` folder contains 42 files from `assets_2.zip`. These files are not referenced by the deployed website and must not be uploaded as part of this project.
-
-They include:
-
-- *Persona 3 Reload* portrait components and promotional GIFs associated with ATLUS and Xbox
-- The *Persona 3 Portable* title-screen GIF, `p3p-menu.gif`, containing official game branding
-- A profile illustration whose origin and usage rights have not been confirmed
-- Gradius III sound effects associated with Konami
-
-Keep these materials separate from the public website unless you have confirmed the relevant usage rights. Do not assume that publicly accessible material is free to redistribute.
-
-The live site is designed to use its own original graphics and synthesized interface sounds instead.
-
-## Privacy and Accessibility
-
-- No backend or database is required.
-- No account registration or login system is included.
-- No analytics or tracking scripts are intentionally included.
-- Interface sounds are opt-in and disabled by default.
-- Visitors who prefer reduced motion automatically skip the boot sequence.
-- Navigation and expandable sections support standard browser keyboard interaction.
-- The page includes a non-JavaScript fallback so the main content remains visible when JavaScript is unavailable.
-
-The Google Fonts integration does make external requests, as explained in the font section above.
-
-## Development Notes
-
-This project was built as a personal portfolio and front-end learning exercise, combining web development with cybersecurity project presentation and interface experimentation.
-
-The source code is intentionally lightweight: HTML, CSS, and vanilla JavaScript, with no framework or build step.
-
-## License
-
-Unless a separate license is provided for a particular asset or dependency, do not assume that every part of this repository is licensed for unrestricted reuse. Third-party fonts and assets remain subject to their respective licenses.
-
-For reuse or redistribution of individual graphics, verify their source and applicable terms first.
-
-- **Portfolio:** [Kenshi // Personal Archive](YOUR-NEOCITIES-URL)

@@ -7,7 +7,7 @@
   <meta name="description" content="Kenshi's personal web space — cybersecurity projects, experiments, and interests.">
   <title>Kenshi // Personal Archive</title>
   <link rel="icon" href="assets/kenshi-monogram-badge.png" type="image/png">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="stylev2.css">
 </head>
 <body>
   <div class="scanlines" aria-hidden="true"></div>
@@ -70,7 +70,8 @@
         <a class="menu-item" href="#about" data-sound><span class="menu-num">03</span><span class="menu-name">ABOUT KENSHI</span><span class="menu-desc">The person behind it</span><span class="menu-arrow" aria-hidden="true">↗</span></a>
         <a class="menu-item" href="#interests" data-sound><span class="menu-num">04</span><span class="menu-name">SIDE QUESTS</span><span class="menu-desc">Interests & collections</span><span class="menu-arrow" aria-hidden="true">↗</span></a>
         <a class="menu-item" href="#links" data-sound><span class="menu-num">05</span><span class="menu-name">TRANSMISSION</span><span class="menu-desc">Find me elsewhere</span><span class="menu-arrow" aria-hidden="true">↗</span></a>
-        <a class="menu-item" href="#social-link" data-sound><span class="menu-num">06</span><span class="menu-name">SOCIAL LINK</span><span class="menu-desc">The Star // Personal reflections</span><span class="menu-arrow" aria-hidden="true">↗</span></a>
+        <a class="menu-item" href="social-link.html" data-sound><span class="menu-num">06</span><span class="menu-name">SOCIAL LINK</span><span class="menu-desc">The Star // Personal reflections</span><span class="menu-arrow" aria-hidden="true">↗</span>
+</a>
       </div>
     </nav>
 
@@ -375,6 +376,7 @@
       </div>
     </section>
 
+
     <section class="contact-panel panel" id="links" aria-labelledby="links-title">
       <div><p class="eyebrow">05 / END OF TRANSMISSION</p><h2 id="links-title">Let's keep<br><em>in touch.</em></h2><p class="contact-copy">I'm always glad to connect with people who enjoy tech, making things, and learning together. For now, GitHub and LinkedIn are the best ways to reach me.</p></div>
       <div class="contact-links">
@@ -384,200 +386,6 @@
       </div>
       <div class="contact-orbit" aria-hidden="true">K</div>
     </section>
-
-<section class="social-link-section panel" id="social-link" aria-labelledby="social-link-title">
-  <div class="social-link-header">
-    <p class="eyebrow">06 / PERSONAL ARCHIVE</p>
-    <p class="social-link-classification">PRIVATE THOUGHTS // PUBLIC REFLECTIONS</p>
-  </div>
-
-  <div class="social-link-main">
-    <div class="social-link-arcana">
-      <span class="social-link-star" aria-hidden="true">☆</span>
-      <p class="eyebrow">ARCANA</p>
-      <h2>THE STAR</h2>
-      <p class="social-link-subtitle">Hope · Patience · Possibility</p>
-    </div>
-
-    <div class="social-link-content">
-      
-      <p
-        class="eyebrow"
-        id="social-link-rank"
-        role="status"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        SOCIAL LINK // RANK 01
-      </p>
-
-
-      <h2 id="social-link-title" aria-live="off">
-        A Connection<br><em>Without a Deadline.</em>
-      </h2>
-
-      <blockquote id="social-link-reflection" aria-live="polite" aria-atomic="true">
-        Some people catch your attention without trying to.
-        <br><br>
-        I don't know what this connection will become, and I don't need to decide that now. I'd rather take the time to understand people, appreciate the moments we share, and let things develop naturally.
-        <br><br>
-        For now, this is simply a reminder to be genuine, patient, and present.
-      </blockquote>
-
-      <div class="social-link-progress" aria-label="Reflection progress">
-        <div class="social-link-progress-track">
-          <div class="social-link-progress-fill" id="social-link-progress-fill"></div>
-        </div>
-        <p id="social-link-progress-label">REFLECTION 01 / 10</p>
-      </div>
-
-    
-      <!-- Direct reflection navigation -->
-      <div class="social-link-selector">
-        <label for="social-link-jump">SELECT ARCHIVE ENTRY</label>
-
-        <select id="social-link-jump" name="social-link-jump">
-          <option value="0">01 — A Connection Without a Deadline</option>
-          <option value="1">02 — The Value of Patience</option>
-          <option value="2">03 — Small Moments Matter</option>
-          <option value="3">04 — Be Curious, Not Certain</option>
-          <option value="4">05 — Keep My Own Rhythm</option>
-          <option value="5">06 — Honesty Without Pressure</option>
-          <option value="6">07 — Let People Be Themselves</option>
-          <option value="7">08 — Make Peace With Uncertainty</option>
-          <option value="8">09 — Choose Mutual Effort</option>
-          <option value="9">10 — Hope, With Both Feet on the Ground</option>
-        </select>
-      </div>
-
-      
-      <div class="social-link-controls">
-        <button
-          class="social-link-button"
-          id="social-link-previous"
-          type="button"
-          data-sound
-          disabled
-        >
-          <span aria-hidden="true">←</span> PREVIOUS
-        </button>
-
-        <button
-          class="social-link-button"
-          id="social-link-next"
-          type="button"
-          data-sound
-        >
-          REVEAL NEXT <span aria-hidden="true">→</span>
-        </button>
-      </div>
-
-
-      <p class="social-link-footnote">
-        A record of my own growth. Not a measure of anyone else's feelings.
-      </p>
-    </div>
-  </div>
-
-  
-      <p class="social-link-footnote">
-        A record of my own growth. Not a measure of anyone else's feelings.
-      </p>
-
-      <!-- Hidden archive access -->
-      <div class="archive-secret-access">
-        <button
-          type="button"
-          id="secret-trigger"
-          class="secret-trigger"
-          aria-label="Inspect archive"
-          title="Inspect archive"
-        >✳</button>
-
-        <button
-          type="button"
-          id="secret-unlock"
-          class="social-link-button"
-          hidden
-        >
-          UNLISTED MEMORY <span aria-hidden="true">↗</span>
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section
-  id="secret-page"
-  class="social-link-section panel secret-page"
-  aria-labelledby="secret-page-title"
-  hidden
->
-  <div class="social-link-header">
-    <p class="eyebrow">UNLISTED ENTRY // 001</p>
-    <p class="social-link-classification">
-      PERSONAL RECORD — UNINDEXED
-    </p>
-  </div>
-
-  <div class="social-link-main">
-    <div class="social-link-arcana">
-      <span class="social-link-star" aria-hidden="true">☆</span>
-      <p class="eyebrow">ARCHIVE RECORD</p>
-      <h2>UNWRITTEN</h2>
-      <p class="social-link-subtitle">
-        Memory · Time · Possibility
-      </p>
-    </div>
-
-    <div class="social-link-content">
-      <p class="eyebrow">UNLISTED MEMORY</p>
-
-      <h2 id="secret-page-title">
-        An Unwritten<br><em>Chapter.</em>
-      </h2>
-
-      <blockquote>
-        Sometimes, someone becomes part of your thoughts
-        in ways you never expected.
-
-        <br><br>
-
-        It's the little moments that stay with you,
-        the things you remember without trying, and
-        the possibility of knowing someone a little better
-        with time.
-
-        <br><br>
-
-        I don't know what the future holds, and I don't
-        need to find out today. For now, I'll let things
-        unfold naturally, appreciate what is real, and
-        leave room for life to surprise me.
-
-        <br><br>
-
-        Some chapters don't need an ending yet.
-      </blockquote>
-
-      <div class="social-link-controls">
-        <button
-          type="button"
-          id="secret-return"
-          class="social-link-button"
-          data-sound
-        >
-          ← RETURN TO ARCHIVE
-        </button>
-      </div>
-
-      <p class="social-link-footnote">
-        END OF RECORD // THE REST REMAINS UNWRITTEN
-      </p>
-    </div>
-  </div>
-</section>
-
 
     <footer class="footer"><span>© <span id="year"></span> KENSHI — PERSONAL ARCHIVE</span><span>MADE WITH CURIOSITY <b aria-hidden="true">✳</b> HOSTED ON NEOCITIES</span><a href="#home" data-sound>BACK TO TOP ↑</a></footer>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>

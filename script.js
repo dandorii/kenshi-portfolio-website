@@ -25,7 +25,11 @@ const yoruVisual = document.querySelector(".yoru-visual");
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearElement = document.getElementById("year");
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
 
 // Local clock in the top bar. It updates every 30 seconds, which is enough for minute-level time.
 const localTime = document.getElementById("localTime");
@@ -52,7 +56,9 @@ const bootMessages = [
 ];
 
 // Keep the page hidden from keyboard and screen readers until the boot screen is gone.
-siteShell.inert = true;
+if (siteShell) {
+  siteShell.inert = true;
+}
 
 function showToast(message) {
   toast.textContent = message;
@@ -79,33 +85,47 @@ function skipIntro() {
   finishBoot();
 }
 
-if (prefersReducedMotion) {
-  // Visitors who prefer less motion skip the boot entirely. Hiding the screen before it
-  // renders also means its GIF is never downloaded.
-  bootScreen.hidden = true;
-  finishBoot();
-} else {
-  skipBoot.focus({ preventScroll: true });
-  let bootStep = 0;
-  bootInterval = setInterval(() => {
-    if (bootFinished) {
-      clearInterval(bootInterval);
-      return;
-    }
-    bootLog.textContent = bootMessages[Math.min(bootStep, bootMessages.length - 1)];
-    bootProgress.style.width = `${Math.min((bootStep + 1) * 25, 100)}%`;
-    bootStep++;
-    if (bootStep >= bootMessages.length) {
-      clearInterval(bootInterval);
-      setTimeout(finishBoot, 450);
-    }
-  }, 420);
+if (bootScreen && siteShell && bootLog && bootProgress && skipBoot) {
+  if (prefersReducedMotion) {
+    // Visitors who prefer less motion skip the boot entirely.
+    bootScreen.hidden = true;
+    finishBoot();
+  } else {
+    skipBoot.focus({ preventScroll: true });
+
+    let bootStep = 0;
+
+    bootInterval = setInterval(() => {
+      if (bootFinished) {
+        clearInterval(bootInterval);
+        return;
+      }
+
+      bootLog.textContent =
+        bootMessages[Math.min(bootStep, bootMessages.length - 1)];
+
+      bootProgress.style.width =
+        `${Math.min((bootStep + 1) * 25, 100)}%`;
+
+      bootStep++;
+
+      if (bootStep >= bootMessages.length) {
+        clearInterval(bootInterval);
+        setTimeout(finishBoot, 450);
+      }
+    }, 420);
+  }
 }
 
-skipBoot.addEventListener("click", skipIntro);
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") skipIntro();
-});
+if (skipBoot) {
+  skipBoot.addEventListener("click", skipIntro);
+}
+
+if (bootScreen) {
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") skipIntro();
+  });
+}
 
 function playTone(frequency = 620, duration = 0.045, type = "sine") {
   if (!soundEnabled) return;
@@ -127,18 +147,19 @@ function playTone(frequency = 620, duration = 0.045, type = "sine") {
   }
 }
 
-soundToggle.addEventListener("click", () => {
+if (soundToggle && soundState) {
+  soundToggle.addEventListener("click", () => {
   soundEnabled = !soundEnabled;
   soundToggle.setAttribute("aria-pressed", String(soundEnabled));
   soundState.textContent = soundEnabled ? "ON" : "OFF";
   if (soundEnabled) {
     playTone(740, 0.09, "triangle");
     showToast("INTERFACE SOUND ENABLED");
-  } else {
+    } else {
     showToast("INTERFACE SOUND MUTED");
   }
-});
-
+  });
+}
 
 document.querySelectorAll("[data-sound]").forEach((element) => {
   element.addEventListener("mouseenter", () => {
@@ -155,23 +176,39 @@ document.querySelectorAll("[data-sound]").forEach((element) => {
 });
 
 
-// Secret interaction: click the wordmark five times, each within 2.5 seconds of the last.
+// Secret interaction: click the wordmark five times, each within 2.5 seconds.
 let logoClicks = 0;
 let logoClickTimer;
-document.getElementById("wordmark").addEventListener("click", (event) => {
-  // The first four clicks keep normal navigation (back to the top of the page).
-  logoClicks++;
-  clearTimeout(logoClickTimer);
-  logoClickTimer = setTimeout(() => { logoClicks = 0; }, 2500);
-  if (logoClicks >= 5) {
-    event.preventDefault();
-    document.body.classList.toggle("secret-mode");
-    logoClicks = 0;
-    const active = document.body.classList.contains("secret-mode");
-    showToast(active ? "NIGHT SHIFT MODE // UNLOCKED" : "NIGHT SHIFT MODE // DISABLED");
-    playTone(active ? 880 : 440, 0.12, "triangle");
-  }
-});
+
+const wordmark = document.getElementById("wordmark");
+
+if (wordmark) {
+  wordmark.addEventListener("click", (event) => {
+    // The first four clicks keep normal navigation.
+    logoClicks++;
+    clearTimeout(logoClickTimer);
+
+    logoClickTimer = setTimeout(() => {
+      logoClicks = 0;
+    }, 2500);
+
+    if (logoClicks >= 5) {
+      event.preventDefault();
+      document.body.classList.toggle("secret-mode");
+      logoClicks = 0;
+
+      const active = document.body.classList.contains("secret-mode");
+
+      showToast(
+        active
+          ? "NIGHT SHIFT MODE // UNLOCKED"
+          : "NIGHT SHIFT MODE // DISABLED"
+      );
+
+      playTone(active ? 880 : 440, 0.12, "triangle");
+    }
+  });
+}
 
 // Keyboard easter egg: type Y, O, R, U in order.
 const secretSequence = ["y", "o", "r", "u"];
@@ -199,33 +236,54 @@ document.addEventListener("keydown", (event) => {
 });
 
 
+
 /* =========================================
    SECRET ARCHIVE // HIDDEN MENU
    ========================================= */
 
 (() => {
   const trigger = document.getElementById("secret-trigger");
-  const unlockButton = document.getElementById("secret-unlock");
   const socialSection = document.getElementById("social-link");
   const secretPage = document.getElementById("secret-page");
   const returnButton = document.getElementById("secret-return");
 
   // Stop safely if the required HTML elements are missing.
-  if (
-    !trigger ||
-    !unlockButton ||
-    !socialSection ||
-    !secretPage ||
-    !returnButton
-  ) {
+  if (!trigger || !socialSection || !secretPage || !returnButton) {
     return;
   }
 
   let clicks = 0;
   let resetTimer;
+  let unlocked = false;
 
   // Inspect the archive with five clicks within 2.5 seconds.
   trigger.addEventListener("click", () => {
+    // Once transformed, the button opens the hidden memory.
+    if (unlocked) {
+      socialSection.hidden = true;
+      secretPage.hidden = false;
+
+      secretPage.setAttribute("tabindex", "-1");
+      secretPage.scrollIntoView({
+        behavior: window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches ? "auto" : "smooth",
+        block: "start"
+      });
+
+      secretPage.focus({ preventScroll: true });
+
+      if (typeof showToast === "function") {
+        showToast("UNLISTED MEMORY // OPENED");
+      }
+
+      if (typeof playTone === "function") {
+        playTone(740, 0.1, "triangle");
+      }
+
+      return;
+    }
+
     clicks++;
     clearTimeout(resetTimer);
 
@@ -236,9 +294,16 @@ document.addEventListener("keydown", (event) => {
     if (clicks >= 5) {
       clicks = 0;
       clearTimeout(resetTimer);
+      unlocked = true;
 
-      unlockButton.hidden = false;
-      trigger.setAttribute("aria-label", "Archive inspected");
+      // Transform the same symbol into the memory button.
+      trigger.innerHTML =
+        'UNLISTED MEMORY <span aria-hidden="true">↗</span>';
+
+      trigger.classList.remove("secret-trigger");
+      trigger.classList.add("social-link-button");
+      trigger.setAttribute("aria-label", "Open unlisted memory");
+      trigger.setAttribute("title", "Open unlisted memory");
 
       if (typeof showToast === "function") {
         showToast("UNLISTED RECORD DETECTED");
@@ -250,30 +315,6 @@ document.addEventListener("keydown", (event) => {
     }
   });
 
-  // Open the unlisted page.
-  unlockButton.addEventListener("click", () => {
-    socialSection.hidden = true;
-    secretPage.hidden = false;
-
-    secretPage.setAttribute("tabindex", "-1");
-    secretPage.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
-      block: "start"
-    });
-
-    secretPage.focus({ preventScroll: true });
-
-    if (typeof showToast === "function") {
-      showToast("UNLISTED MEMORY // OPENED");
-    }
-
-    if (typeof playTone === "function") {
-      playTone(740, 0.1, "triangle");
-    }
-  });
-
   // Return to the original ten-reflection archive.
   returnButton.addEventListener("click", () => {
     secretPage.hidden = true;
@@ -281,9 +322,9 @@ document.addEventListener("keydown", (event) => {
 
     socialSection.setAttribute("tabindex", "-1");
     socialSection.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
+      behavior: window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches ? "auto" : "smooth",
       block: "start"
     });
 
@@ -298,6 +339,7 @@ document.addEventListener("keydown", (event) => {
     }
   });
 })();
+
 
 
 // Highlight the menu destination as the visitor scrolls.
@@ -550,71 +592,89 @@ if ("IntersectionObserver" in window) {
   rankLabel.classList.remove("rank-up");
   });
 
-  function renderReflection(index) {
-    const entry = reflections[index];
-    const rank = index + 1;
-    const progress = (rank / reflections.length) * 100;
-
-    rankLabel.textContent =
-      `SOCIAL LINK // RANK ${String(rank).padStart(2, "0")}`;
-
-    title.textContent = entry.title;
-    reflection.textContent = entry.text;
-    reflection.style.whiteSpace = "pre-line";
-
-    progressFill.style.width = `${progress}%`;
-
-    progressLabel.textContent =
-      `REFLECTION ${String(rank).padStart(2, "0")} / ${reflections.length}`;
-
-    const isFirstReflection = index === 0;
-    const isLastReflection = index === reflections.length - 1;
-
-    // FIX: Enable Previous after leaving reflection 01.
-    previousButton.disabled = isFirstReflection;
-
-    // Disable Next only after reaching reflection 10.
-    nextButton.disabled = isLastReflection;
-
-    nextButton.innerHTML = isLastReflection
-      ? 'ARCHIVE COMPLETE <span aria-hidden="true">✓</span>'
-      : 'REVEAL NEXT REFLECTION <span aria-hidden="true">→</span>';
-
-    if (isLastReflection && typeof showToast === "function") {
-      showToast("STAR ARCANA // ARCHIVE COMPLETE");
-    }
-      
-  // Keep the selector synchronized with Previous and Next.
-  jumpSelector.value = String(index);
+  
+function renderReflection(index) {
+  if (index < 0 || index >= reflections.length) {
+    return;
   }
+
+  const entry = reflections[index];
+  const rank = index + 1;
+  const progress = (rank / reflections.length) * 100;
+
+  rankLabel.textContent =
+    `SOCIAL LINK // RANK ${String(rank).padStart(2, "0")}`;
+
+  title.textContent = entry.title;
+  reflection.textContent = entry.text;
+  reflection.style.whiteSpace = "pre-line";
+  reflection.style.display = "block";
+
+  progressFill.style.width = `${progress}%`;
+
+  progressLabel.textContent =
+    `REFLECTION ${String(rank).padStart(2, "0")} / ${reflections.length}`;
+
+  const isFirstReflection = index === 0;
+  const isLastReflection = index === reflections.length - 1;
+
+  previousButton.disabled = isFirstReflection;
+  nextButton.disabled = isLastReflection;
+
+  nextButton.innerHTML = isLastReflection
+    ? 'ARCHIVE COMPLETE <span aria-hidden="true">✓</span>'
+    : 'REVEAL NEXT REFLECTION <span aria-hidden="true">→</span>';
+
+  jumpSelector.value = String(index);
+
+  if (isLastReflection && typeof showToast === "function") {
+    showToast("STAR ARCANA // ARCHIVE COMPLETE");
+  }
+}
   
   
   // Subtle transition when changing reflections.
+  let reflectionTransitionTimer;
+
   function animateReflectionChange(index) {
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
+    clearTimeout(reflectionTransitionTimer);
+
     if (reducedMotion) {
+      title.classList.remove("reflection-changing");
+      reflection.classList.remove("reflection-changing");
       renderReflection(index);
       return;
     }
-    
+
     rankLabel.classList.remove("rank-up");
     void rankLabel.offsetWidth;
     rankLabel.classList.add("rank-up");
 
-   
+    title.classList.remove("reflection-changing");
+    reflection.classList.remove("reflection-changing");
+
+    // Allow the visible state to register before fading out.
+    void title.offsetWidth;
 
     title.classList.add("reflection-changing");
     reflection.classList.add("reflection-changing");
 
-    setTimeout(() => {
+    reflectionTransitionTimer = setTimeout(() => {
       renderReflection(index);
-      title.classList.remove("reflection-changing");
-      reflection.classList.remove("reflection-changing");
+
+      requestAnimationFrame(() => {
+        title.classList.remove("reflection-changing");
+        reflection.classList.remove("reflection-changing");
+      });
     }, 160);
   }
+
+
+
 
 
   // Move forward through the archive.
@@ -697,7 +757,4 @@ if ("IntersectionObserver" in window) {
   renderReflection(currentIndex);
 })();
 
-/* =========================================
-   SOCIAL LINK ARCHIVE // THE STAR ARCANA
-   ========================================= */
 

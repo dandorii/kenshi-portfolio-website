@@ -1126,37 +1126,38 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
 
 .social-link-main {
   display: grid;
-  grid-template-columns: minmax(150px, 0.75fr) minmax(0, 1.6fr);
-  gap: clamp(1.5rem, 4vw, 3.5rem);
-  padding-top: 2.5rem;
+  grid-template-columns: minmax(140px, 0.65fr) minmax(0, 1.6fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  padding-top: 1.75rem;
 }
+
 
 .social-link-arcana {
   align-self: start;
-  padding: 1.5rem 1rem;
+  padding: 1.25rem 1rem;
   text-align: center;
-  border: 1px solid rgba(104, 190, 255, 0.3);
+  border: 1px solid rgba(104, 190, 255, 0.24);
   background: linear-gradient(
     160deg,
-    rgba(49, 128, 207, 0.2),
-    rgba(8, 19, 38, 0.8)
+    rgba(49, 128, 207, 0.12),
+    rgba(8, 19, 38, 0.55)
   );
 }
 
 .social-link-star {
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: #8bd2ff;
-  font-size: clamp(4rem, 10vw, 7rem);
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
   line-height: 1;
-  text-shadow: 0 0 25px rgba(86, 181, 255, 0.4);
+  text-shadow: 0 0 20px rgba(86, 181, 255, 0.3);
 }
 
 .social-link-arcana .eyebrow {
   margin-bottom: 0.5rem;
 }
 
-.social-link-arcana h2 {
+.social-link-arcana h3 {
   margin: 0;
   color: #e8f5ff;
   font-size: clamp(1.4rem, 3vw, 2rem);
@@ -1179,11 +1180,12 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
   letter-spacing: 0.12em;
 }
 
-.social-link-content h2 {
-  margin: 1rem 0 1.5rem;
+.social-link-content h3 {
+  margin: 0.85rem 0 1.1rem;
   color: #f0f7ff;
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  line-height: 1.15;
+  font-size: clamp(1.6rem, 3.2vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
 }
 
 .social-link-content h2 em {
@@ -1191,15 +1193,17 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
   font-style: normal;
 }
 
+
 .social-link-content blockquote {
   margin: 0;
-  padding-left: 1.25rem;
+  padding-left: 1rem;
   border-left: 2px solid #439fe8;
   color: #c2d4e8;
-  font-size: 0.95rem;
-  line-height: 1.9;
+  font-size: 0.92rem;
+  line-height: 1.8;
   white-space: normal;
 }
+
 
 .social-link-progress {
   margin-top: 2rem;
@@ -1226,19 +1230,20 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
   letter-spacing: 0.12em;
 }
 
+
 .social-link-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  padding: 0.9rem 1.15rem;
-  border: 1px solid #62baff;
-  background: rgba(37, 111, 182, 0.18);
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(98, 186, 255, 0.65);
+  background: rgba(37, 111, 182, 0.12);
   color: #e8f5ff;
   font: inherit;
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   cursor: pointer;
   transition:
     background 180ms ease,
@@ -1248,14 +1253,21 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
 
 .social-link-button:hover {
   border-color: #b0e0ff;
-  background: rgba(54, 145, 220, 0.32);
-  transform: translateY(-2px);
+  background: rgba(54, 145, 220, 0.24);
+  transform: translateY(-1px);
 }
 
 .social-link-button:focus-visible {
   outline: 2px solid #b0e0ff;
-  outline-offset: 4px;
+  outline-offset: 3px;
 }
+
+.social-link-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
 
 .social-link-footnote {
   margin-top: 1.25rem;
@@ -1300,12 +1312,6 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
 
 .social-link-controls .social-link-button {
   margin-top: 0;
-}
-
-.social-link-button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  transform: none;
 }
 
 @media (max-width: 640px) {
@@ -1420,8 +1426,7 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
 }
 
 /* Keep hidden elements hidden even when other CSS sets display */
-.secret-page[hidden],
-#secret-unlock[hidden] {
+.secret-page[hidden] {
   display: none !important;
 }
 
@@ -1452,28 +1457,21 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
   }
 }
 
-/* Prevent the secret-page title from overflowing */
+/* Keep the secret archive card within its container */
 #secret-page .social-link-arcana {
   min-width: 0;
   max-width: 100%;
 }
 
-#secret-page .social-link-arcana h2 {
+/* Keep the secret archive heading readable on small screens */
+#secret-page .social-link-arcana h3 {
   max-width: 100%;
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  overflow-wrap: anywhere;
-  word-break: normal;
-  line-height: 1.1;
-}
-
-
-/* Smaller UNWRITTEN heading on the secret archive page */
-
-#secret-page .social-link-arcana h2 {
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  min-width: 0;
+  box-sizing: border-box;
+  font-size: clamp(0.85rem, 2vw, 1.5rem);
   letter-spacing: 0.02em;
   line-height: 1.2;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
 }
 
 
@@ -1490,24 +1488,35 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
   letter-spacing: 0.14em;
 }
 
+
 .social-link-selector select {
   width: 100%;
   min-width: 0;
-  padding: 12px 14px;
-  border: 1px solid rgba(120, 190, 220, 0.25);
-  border-radius: 0;
-  background: rgba(8, 13, 24, 0.9);
-  color: inherit;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgba(98, 186, 255, 0.35);
+  border-radius: 3px;
+  background: rgba(8, 13, 24, 0.75);
+  color: #e8f5ff;
   font: inherit;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .social-link-selector select:hover,
 .social-link-selector select:focus-visible {
-  border-color: #38bdf8;
+  border-color: #62baff;
+  background: rgba(14, 36, 61, 0.9);
   outline: 2px solid transparent;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.12);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.1);
+}
+
+.social-link-selector select option {
+  background: #0b1426;
+  color: #e8f5ff;
 }
 
 
@@ -1660,57 +1669,8 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
 }
 
 
-/* =========================================
-   SOCIAL LINK // CLASSIFIED ARCHIVE THEME
-   ========================================= */
-
-.social-link-page {
-  background-color: #070b14;
-  background-image:
-    radial-gradient(
-      ellipse at 50% 0%,
-      rgba(30, 76, 125, 0.20),
-      transparent 58%
-    ),
-    linear-gradient(
-      180deg,
-      #080e1b 0%,
-      #070b14 55%,
-      #050810 100%
-    );
-  background-attachment: fixed;
-}
-
 /* Give the archive a quieter, more deliberate layout. */
-.social-link-page main {
-  position: relative;
-  isolation: isolate;
-  min-height: 100vh;
-  padding-bottom: 64px;
-}
 
-/* Subtle technical texture, without overpowering the text. */
-.social-link-page main::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.14;
-
-  background-image:
-    linear-gradient(
-      rgba(100, 160, 210, 0.045) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(100, 160, 210, 0.045) 1px,
-      transparent 1px
-    );
-
-  background-size: 36px 36px;
-}
 
 /* Keep the header and archive visually connected. */
 .social-link-page .social-link-page-header {
@@ -1729,12 +1689,23 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
 /* The archive panel feels like a contained terminal window. */
 .social-link-page .social-link-section {
   position: relative;
-  border-color: rgba(90, 160, 210, 0.25);
-  background: rgba(7, 15, 29, 0.88);
-  box-shadow:
-    0 0 0 1px rgba(56, 189, 248, 0.035),
-    0 24px 80px rgba(0, 0, 0, 0.28);
+  width: min(100% - 40px, 900px);
+  max-width: 900px;
+  min-width: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  border-color: var(--border, rgba(90, 160, 210, 0.25));
+  background:
+    linear-gradient(
+      135deg,
+      rgba(24, 66, 120, 0.12),
+      transparent 65%
+    ),
+    var(--panel, #0b1426);
+  box-shadow: none;
 }
+
 
 /* A restrained cyan divider under the archive heading. */
 .social-link-page .social-link-header {
@@ -1742,10 +1713,6 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
 }
 
 /* Star insignia: luminous, but not distracting. */
-.social-link-page .social-link-star {
-  color: #7dd3fc;
-  text-shadow: 0 0 18px rgba(56, 189, 248, 0.32);
-}
 
 /* Make the reflection area feel like a recorded entry. */
 .social-link-page #social-link-reflection,
@@ -1760,16 +1727,7 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
 }
 
 /* Mobile readability. */
-@media (max-width: 600px) {
-  .social-link-page main {
-    padding-bottom: 36px;
-  }
 
-  .social-link-page .social-link-page-header {
-    padding-top: 22px;
-    padding-bottom: 18px;
-  }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .social-link-page *,
@@ -1836,25 +1794,27 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
 
 .social-link-page-header .archive-page-title {
   margin: 0;
-  font-size: clamp(2.7rem, 7vw, 5.4rem);
-  line-height: 0.98;
-  letter-spacing: -0.055em;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
   text-transform: uppercase;
 }
 
 .social-link-page-header .archive-page-title span {
-  display: block;
+  display: inline;
   color: #7dd3fc;
-  text-shadow: 0 0 28px rgba(56, 189, 248, 0.13);
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.12);
 }
+
 
 .social-link-page-header .archive-page-description {
   max-width: 520px;
-  margin: 20px 0 24px;
+  margin: 14px 0 20px;
   color: #91a4bf;
-  font-size: 0.92rem;
-  line-height: 1.8;
+  font-size: 0.9rem;
+  line-height: 1.7;
 }
+
 
 /* Record metadata and compact sound toggle */
 .social-link-page-header .archive-id {
@@ -1964,100 +1924,18 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
    SOCIAL LINK // ANIMATED STARFIELD
    ========================================= */
 
-.social-link-page {
-  position: relative;
-  isolation: isolate;
-  overflow-x: clip;
-}
 
 /* Fixed background layer behind the archive */
-.social-link-page::before,
-.social-link-page::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-}
 
 /* Small, scattered stars */
-.social-link-page::before {
-  background-image:
-    radial-gradient(
-      1px 1px at 8% 18%,
-      rgba(186, 230, 253, 0.85) 99%,
-      transparent
-    ),
-    radial-gradient(
-      1px 1px at 22% 72%,
-      rgba(125, 211, 252, 0.75) 99%,
-      transparent
-    ),
-    radial-gradient(
-      2px 2px at 38% 34%,
-      rgba(186, 230, 253, 0.7) 99%,
-      transparent
-    ),
-    radial-gradient(
-      1px 1px at 55% 82%,
-      rgba(125, 211, 252, 0.8) 99%,
-      transparent
-    ),
-    radial-gradient(
-      1px 1px at 72% 22%,
-      rgba(186, 230, 253, 0.8) 99%,
-      transparent
-    ),
-    radial-gradient(
-      2px 2px at 88% 60%,
-      rgba(125, 211, 252, 0.7) 99%,
-      transparent
-    ),
-    radial-gradient(
-      1px 1px at 94% 12%,
-      rgba(186, 230, 253, 0.75) 99%,
-      transparent
-    );
-
-  background-size: 100% 100%;
-  opacity: 0.65;
-  animation: archive-stars-twinkle 6s ease-in-out infinite alternate;
-}
 
 /* Soft atmospheric blue glow */
-.social-link-page::after {
-  background:
-    radial-gradient(
-      ellipse at 80% 35%,
-      rgba(37, 99, 235, 0.055),
-      transparent 48%
-    ),
-    radial-gradient(
-      ellipse at 15% 75%,
-      rgba(56, 189, 248, 0.045),
-      transparent 42%
-    );
-  opacity: 0.9;
-}
+
 
 /* Slow, restrained brightness change */
-@keyframes archive-stars-twinkle {
-  from {
-    opacity: 0.35;
-  }
 
-  to {
-    opacity: 0.8;
-  }
-}
 
 /* Accessibility: disable the animation when requested */
-@media (prefers-reduced-motion: reduce) {
-  .social-link-page::before {
-    animation: none;
-    opacity: 0.55;
-  }
-}
 
 
 /* =========================================
@@ -2146,22 +2024,6 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
 }
 
 /* Subtle scan accent at the top of the panel */
-.social-link-page #social-link::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -35%;
-  width: 35%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(125, 211, 252, 0.85),
-    transparent
-  );
-  pointer-events: none;
-  animation: archive-scan-line 9s ease-in-out infinite;
-}
 
 /* ACCESS GRANTED status indicator */
 .social-link-page .archive-status-indicator {
@@ -2170,29 +2032,6 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
 }
 
 /* A slow, restrained pass across the panel */
-@keyframes archive-scan-line {
-  0% {
-    left: -35%;
-    opacity: 0;
-  }
-
-  12% {
-    opacity: 0.75;
-  }
-
-  65% {
-    opacity: 0.55;
-  }
-
-  85% {
-    opacity: 0;
-  }
-
-  100% {
-    left: 100%;
-    opacity: 0;
-  }
-}
 
 /* Keep the status light alive without flashing */
 @keyframes archive-status-pulse {
@@ -2245,31 +2084,24 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
 }
 
 
-/* SOCIAL LINK ARCHIVE // RESPONSIVE LAYOUT */
+/* SOCIAL LINK ARCHIVE // INTEGRATED RESPONSIVE LAYOUT */
 
 .social-link-page {
+  position: relative;
+  isolation: isolate;
   width: 100%;
   min-width: 0;
-  overflow-x: hidden;
-}
-
-.social-link-page .social-link-page-header,
-.social-link-page .social-link-section,
-.social-link-page .secret-page {
-  width: 100%;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
+  overflow-x: clip;
 }
 
 .social-link-page .social-link-page-header {
-  margin-bottom: 1.5rem;
+  width: min(100% - 40px, 900px);
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+  padding-top: 1.5rem;
+  box-sizing: border-box;
 }
 
-.social-link-page .social-link-section {
-  min-width: 0;
-}
 
 .social-link-page .social-link-content,
 .social-link-page .archive-id {
@@ -2280,6 +2112,18 @@ details[open] > summary .summary-mark { transform: rotate(-135deg); }
 
 .social-link-page .social-link-content blockquote {
   overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .social-link-page .social-link-page-header,
+  .social-link-page .social-link-section {
+    width: calc(100% - 32px);
+  }
+
+  .social-link-page .social-link-page-header {
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }
 
 

@@ -126,6 +126,6 @@ Explore the different versions of my personal portfolio.
 - **[Neocities — Main Portfolio](https://kenshidev.neocities.org/)**  
   The original public-facing portfolio, without the Personal Archive section.
 
-- **[GitHub — Personal Archive Edition](https://github.com/dandorii/kenshi-personal-archive)**  
+- **[GitHub — Personal Archive Edition]([https://github.com/dandorii/kenshi-personal-archive](https://dandorii.github.io/kenshi-portfolio-website/))**  
   The version that includes the Social Link Archive, personal reflections, and hidden memories.
 
